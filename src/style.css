@@ -1,0 +1,310 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.Item {
+  align-items: center;
+  background: #7868ed;
+  border-radius: 30px;
+  border: 1px ridge #fff;
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+  height: 25px;
+  justify-content: center;
+  margin-bottom: 3px;
+  outline: none;
+  width:145px;
+}
+
+.Item:hover {
+  background: #5c50b6;
+}
+
+#formprojectprev{
+  align-items:flex-start;
+  border-radius: 20px;
+  border: 1px dashed #000000;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  height:80%;
+  justify-content:flex-start;
+  overflow: none;
+  padding-right: 20px;
+  width: 80%;
+}
+
+#formproject{
+  align-items:flex-start;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px groove grey;
+  height:99%;
+  justify-content:flex-start;
+  overflow: auto;
+  padding: 20px;
+  width: 100%;
+}
+
+#formMain{
+  align-items: center;
+  border-radius: 20px;
+  display: flex;
+  border: 1px groove grey;
+  flex-direction: column;
+  height:90vh;
+  overflow: hidden;
+  padding: 10px 10px;
+  position: absolute;
+  width: 90vw;
+}
+
+.Mascara {
+  align-items: center;
+  background-color: #ffff;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left:0;
+  opacity: 0.3;
+  position: absolute;
+  top:0;
+  width: 100vw;
+  z-index: 100;
+}
+
+.Fundo {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left:0;
+  position: absolute;
+  top:0;
+  width: 100%;
+}
+
+.Modal {
+  vertical-align: middle;
+  align-items: center;
+  background: #eceeef;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 2px 2px grey;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  position: absolute;
+  width: 230px;
+  z-index: 121;
+  margin: 0 auto;
+}
+
+.MImg{
+  height: 226px;
+  width: 326px;
+}
+
+.MTitle{
+  height: 185px;
+  width: 326px;
+}
+
+.MSelect{
+  height: 250px;
+  width: 314px;
+}
+
+.MText{
+  height: 304px;
+  width: 310px;
+}
+
+.MCheck{
+  height: 246px;
+  width: 310px;
+}
+
+.MYN{
+  height: 418px;
+  width: 345px;
+}
+
+.visible {
+  display: flex;
+}
+
+.inVisible {
+  display: none;
+}
+.h1{
+  font-size: 1.75em;
+}
+.h2{
+  font-size: 1.25em;
+}
+
+.h3{
+  font-size: 1em;
+}
+
+.inputSelect{
+  margin: 10px 0 ;
+  text-align: center;
+  width: 100%;
+}
+
+input, select{
+  border-radius: 7px;
+  border: 1px solid rgb(184, 184, 184);
+  font-size: 12px;
+  outline: none;
+  padding: 5px 5px;
+}
+
+textarea{
+  border-radius: 7px;
+  border: 1px solid rgb(184, 184, 184);
+  font-size: 12px; 
+  height: 50px;
+  padding: 5px;
+  outline: none;
+  resize: none; 
+  width: 300px; 
+}
+
+#radio{
+  align-items: center;
+  border: 1px solid rgb(184, 184, 184);
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: center;
+  overflow: none;
+  text-align: center;
+  width: 320px;
+  }
+
+.falseBox {
+  font-size: 10px;
+  background-color: transparent;
+}
+
+input{
+  margin-right: 10px;
+  padding-left: 10px;
+  padding: 5px 5px;
+}
+
+.example{
+  align-items: center;
+  display:flex;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  position: relative;
+}
+.label{
+  align-items: center;
+  display:flex;
+  height: 20px;
+  justify-content: flex-start;
+  width: 100%;
+}
+.exampleForm{
+  align-items: center;
+  display:flex;
+  justify-content: flex-start;
+  margin: 5px 0;
+  padding-left: 10px;
+  width: 100%;
+}
+.column{
+  display: flex;
+  justify-content: space-evenly;
+  height: 80px;
+  margin-top: 10px;
+  width: 100%;
+}
+.rowLine{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.col{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.row {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 6em;
+  justify-content: space-between;
+  width: 50%;
+}
+.submit{
+  align-items: center;
+  display: flex;
+  height: 40px;
+  justify-content: space-evenly;
+  width:100%;
+}
+
+.visibility{
+  visibility:visible;
+}
+
+.hidden{
+  visibility:hidden;
+}
+
+.columns{
+  display: flex;
+  flex-direction: column;
+}
+
+.inline{
+  margin-top: 10px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 33vw;
+  align-items: left;
+}
+
+.radio{
+  margin: 0 10px;
+}
+
+.ImgSpace{
+  border-radius: 20px;
+  border: 1px dashed #000000;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  height: 200px;
+  padding: 10px;
+}
+
+#Title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  width: 100%;
+
+}
