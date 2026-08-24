@@ -5,9 +5,9 @@ import { BsTrash } from 'react-icons/bs';
 import Context from '../../context/FormContext';
 
 const ElementGen = (props) => {
-  const currentItem = props.item.item;
+  const currentItem = props.item.item || props.item;
   const [image, setImage] = useState("")
-  const { formItens } = useContext(Context);
+  const { setFormItens } = useContext(Context);
  
   const HistObrig = () => {
     const ReqItem = currentItem.required;
@@ -28,13 +28,10 @@ const ElementGen = (props) => {
 
   }
 
-  const deleteNode = (id) => {
-    document.getElementById(id).remove(); //Id da Div
-    deleteItem(id);
-  }
-
-  const deleteItem = (id) => {
-    formItens[id].item.valid = false;
+  const deleteNode = () => {
+    setFormItens((items) => items.filter((item, index) => (
+      item.id ? item.id !== currentItem.id : index !== props.id
+    )));
   }
   
   const aceptedTypes = {
@@ -50,7 +47,7 @@ const ElementGen = (props) => {
             </p>
             <BsTrash
               style={{ fontSize: "12 px" }}
-              onClick={() => { deleteNode(myId) }}
+              onClick={deleteNode}
             />
           </div>
         </div>
@@ -58,12 +55,12 @@ const ElementGen = (props) => {
     },
     select(props) {
       return (
-        <div id={uuidv4()} style={{ padding: "20px 0", width: '40%' , marginLeft: "30px"}}>
+        <div id={uuidv4()} className="editor-field" style={{ padding: "20px 0" }}>
           <div id={myId} style={{ padding: "10px 0" }}>
             <label
               className={props.className}
             >
-              <BsTrash style={{ fontSize: "10 px" }} onClick={() => { deleteNode(myId) }} />&nbsp;&nbsp;
+              <BsTrash style={{ fontSize: "10 px" }} onClick={deleteNode} />&nbsp;&nbsp;
               {props.label}
               {HistObrig()}
             </label>
@@ -74,10 +71,10 @@ const ElementGen = (props) => {
     },
     questyn(props) {
       return (
-        <div id={uuidv4()} style={{ padding: "20px 0",width: '40%', marginLeft: "30px"}}>
+        <div id={uuidv4()} className="editor-field" style={{ padding: "20px 0" }}>
           <div id={myId} style={{ padding: "10px 0" }}>
             <label className={"label"}>
-              <BsTrash style={{ fontSize: "10 px" }} onClick={() => { deleteNode(myId) }} />&nbsp;&nbsp;
+              <BsTrash style={{ fontSize: "10 px" }} onClick={deleteNode} />&nbsp;&nbsp;
               {props.label}
               {HistObrig()}
             </label> 
@@ -109,12 +106,12 @@ const ElementGen = (props) => {
     },
     text(props) {
       return (
-        <div id={uuidv4()} style={{ padding: "20px 0",width: '40%', marginLeft: "30px"}}>
+        <div id={uuidv4()} className="editor-field" style={{ padding: "20px 0" }}>
           <div id={myId} style={{ padding: "10px 0" }}>
             <label
               className={props.className}
             >
-              <BsTrash style={{ fontSize: "12 px" }} onClick={() => { deleteNode(myId) }} />&nbsp;&nbsp;
+              <BsTrash style={{ fontSize: "12 px" }} onClick={deleteNode} />&nbsp;&nbsp;
               {`${props.label}`}
               {HistObrig()}
             </label>
@@ -128,10 +125,10 @@ const ElementGen = (props) => {
     },
     selectMulti(props) {
       return (
-        <div id={uuidv4()} style={{ padding: "20px 0",width: '40%', marginLeft: "30px"}}>
+        <div id={uuidv4()} className="editor-field" style={{ padding: "20px 0" }}>
           <div id={myId} style={{ padding: "10px 0" }}>
             <label className="label">
-              <BsTrash style={{ fontSize: "10 px" }} onClick={() => { deleteNode(myId) }} />&nbsp;&nbsp;
+              <BsTrash style={{ fontSize: "10 px" }} onClick={deleteNode} />&nbsp;&nbsp;
               {props.label}
               {HistObrig()}
             </label> 
@@ -155,7 +152,7 @@ const ElementGen = (props) => {
               {image?<img src={URL.createObjectURL(image)} alt="Sua Imagem" height="200px"/>: <p style={{textAlign: "center"}}>Espaço para a Pré-Visualização da Imagem</p>}
             </div>
             <p style={{textAlign: "center", padding: "10px 0"}}>
-              <BsTrash style={{ fontSize: "10 px" }} onClick={() => { deleteNode(myId) }} />&nbsp;&nbsp;
+              <BsTrash style={{ fontSize: "10 px" }} onClick={deleteNode} />&nbsp;&nbsp;
               {props.text}
               {HistObrig()} 
             </p> 

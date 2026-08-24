@@ -1,21 +1,26 @@
 import React, { useContext } from 'react';
 import './style.css';
-import NewWindow from 'react-new-window';
-import ElementGen from './Elementos/ElementGen';
+import { useNavigate } from 'react-router-dom';
+import FormRenderer from './FormRenderer';
 import Context from '../context/FormContext';
 
 export default function Previa() {
-  const { formItens } = useContext(Context);
+  const { formItens, formName } = useContext(Context);
+  const navigate = useNavigate();
 
   return(
-    <NewWindow title="Prévia de Formulário">
-      <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-        <div id="formprojectprev">
-
-          {formItens ? formItens.map((field, index) => <ElementGen id={index} key= {index} item={field} />) : null}
-          
+    <main className="print-page">
+      <header className="preview-header">
+        <h1>{formName}</h1>
+        <div className="preview-actions">
+          <button className="Item" onClick={() => navigate('/')}>Voltar ao editor</button>
+          <button className="Item" onClick={() => window.print()}>Imprimir</button>
         </div>
-      </div>
-    </NewWindow>
+      </header>
+      <form className="print-form" onSubmit={(event) => { event.preventDefault(); window.alert('Preenchimento concluído.'); }}>
+        <FormRenderer items={formItens} />
+        <button className="Item completion-button" type="submit">Concluir preenchimento</button>
+      </form>
+    </main>
   )
 }
