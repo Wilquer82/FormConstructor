@@ -2,8 +2,8 @@ import React, { useState, useContext }  from 'react';
 import "../style.css";
 import Context from '../../context/FormContext';
 
-export default function ModalUpload({ setMenu = () => {}, set=()=>{} }) {
-  const { formItens, setFormItens } = useContext(Context);
+export default function ModalUpload({ onCreate,  setMenu = () => {}, set=()=>{} }) {
+  const { setFormItens } = useContext(Context);
   const [text, setText] = useState(""); 
   const [disable, setdisable] = useState(true);
   const [visible, setVisible] = useState(true);
@@ -17,7 +17,8 @@ export default function ModalUpload({ setMenu = () => {}, set=()=>{} }) {
     imageDiv.required = required;
     imageDiv.historic = historic;
     imageDiv.valid = true;
-    setFormItens([...formItens, {item: imageDiv}]);
+    if (onCreate) onCreate({ ...imageDiv });
+    else setFormItens(items => [...items, { ...imageDiv }]);
     setVisible(false);
     setMenu(false);
     set(false);
@@ -41,7 +42,7 @@ export default function ModalUpload({ setMenu = () => {}, set=()=>{} }) {
             <h3 style={{ textAlign: "center" }}>Adicionar Imagem</h3>
           </div>
           <div className="inputSelect">
-            <label style={{margin: "10px 0", fontSize: "14px"}}for="myfile">Escolha uma Imagem:</label>
+            <label style={{margin: "10px 0", fontSize: "14px"}}htmlFor="myfile">Escolha uma Imagem:</label>
             <input style={{margin: "10px 0"}} type="file" id="myfile" name="myfile"/>
           </div>
           <input

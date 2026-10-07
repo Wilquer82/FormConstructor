@@ -2,8 +2,8 @@ import React, { useState, useContext }  from 'react';
 import "../style.css";
 import Context from '../../context/FormContext';
 
-export default function ModalText({ setMenu= () => { }, set = () => { } }) {
-  const { formItens, setFormItens } = useContext(Context);
+export default function ModalText({ onCreate,  setMenu= () => { }, set = () => { } }) {
+  const { setFormItens } = useContext(Context);
   const [text, setText] = useState(""); 
   const [disable, setdisable] = useState(true);
   const [valor, setValor] = useState("");
@@ -16,7 +16,7 @@ export default function ModalText({ setMenu= () => { }, set = () => { } }) {
     if (valor === "line") {
       textDiv.subtype = "line";
     } else {
-      textDiv.subtype = "box";
+      textDiv.subtype = "area";
     }
     textDiv.type = "text";
     textDiv.className = "label";
@@ -25,7 +25,8 @@ export default function ModalText({ setMenu= () => { }, set = () => { } }) {
     textDiv.historic = historic;
     textDiv.valid = true;
     
-    setFormItens([...formItens, { item: textDiv }]);
+    if (onCreate) onCreate({ ...textDiv });
+    else setFormItens(items => [...items, { ...textDiv }]);
     setVisible(false);
     setMenu(false);
     set(false)

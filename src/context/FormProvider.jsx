@@ -7,11 +7,17 @@ const emptyModel = { name: 'Formulário sem título', items: [] };
 
 const createItemId = () => `field-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 
-const normalizeItems = (items) => items.map((entry) => {
-  const source = entry && entry.item ? entry.item : entry;
-  const item = Array.isArray(source) ? { ...source } : { ...source };
-  return { ...item, id: entry.id || item.id || createItemId() };
-});
+const normalizeItems = (items) => {
+  const usedIds = new Set();
+  return items.map((entry) => {
+    const item = { ...(entry?.item || entry) };
+    const candidate = entry?.id ?? item.id;
+    let id = candidate == null || candidate === '' ? createItemId() : String(candidate);
+    while (usedIds.has(id)) id = createItemId();
+    usedIds.add(id);
+    return { ...item, id };
+  });
+};
 
 const readModel = () => {
   try {

@@ -3,8 +3,8 @@ import "../style.css";
 import CreatableSelect from "react-select/creatable";
 import Context from '../../context/FormContext';
 
-export default function ModalSelect({ setMenu = () => {}, set= () => {} }) {
-  const { formItens, setFormItens } = useContext(Context);
+export default function ModalSelect({ onCreate,  setMenu = () => {}, set= () => {} }) {
+  const { setFormItens } = useContext(Context);
   const [disable, setdisable] = useState(true);
   const [label, setLabel] = useState("");
   const [visible, setVisible] = useState(true);
@@ -23,7 +23,8 @@ export default function ModalSelect({ setMenu = () => {}, set= () => {} }) {
     selectDiv.historic = historic;
     selectDiv.valid = true;
     
-    setFormItens([...formItens, {item: selectDiv}]);
+    if (onCreate) onCreate({ ...selectDiv });
+    else setFormItens(items => [...items, { ...selectDiv }]);
     setVisible(false);
     set(false);
     setMenu(false);

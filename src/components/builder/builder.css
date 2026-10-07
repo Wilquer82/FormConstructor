@@ -1,0 +1,52 @@
+#formMain.form-builder { height: auto; max-height: none; max-width: 1280px; min-height: 100svh; border: 0; gap: 24px; }
+.builder-header { display: grid; gap: 10px; }
+.builder-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: start; flex: 1; }
+.builder-palette { background: #fff; padding: 20px; border: 1px solid #d7ddea; border-radius: 12px; }
+.builder-palette h2, .canvas-heading h2 { margin: 0; font-size: 1rem; }
+.builder-palette p { font-size: .8rem; color: #59677e; line-height: 1.5; }
+.palette-list { display: flex; flex-direction: column; gap: 10px; }
+.palette-item { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 12px; border: 1px solid #d7ddea; border-radius: 8px; background: #f8faff; color: #172033; text-align: left; cursor: grab; touch-action: manipulation; font-size: .875rem; }
+.palette-item svg { font-size: 20px; color: #3157d5; flex-shrink: 0; }
+.palette-item:hover { background: #eef2ff; border-color: #3157d5; }
+.palette-item:active, .palette-item.is-dragging, .field-drag-handle:active { cursor: grabbing; }
+.palette-item.is-dragging { box-shadow: 0 12px 28px #17203333; background: #fff; }
+.palette-copy { opacity: .45; }
+.palette-placeholder { display: none; }
+.builder-keyboard-hint { margin-bottom: 0; }
+.builder-workspace { min-width: 0; }
+.canvas-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 12px; }
+.canvas-heading span { color: #59677e; font-size: .8rem; }
+#formproject.builder-canvas { display: block; min-height: 380px; overflow: visible; padding: 20px; background: #edf0f7; border: 2px dashed #cbd3e1; border-radius: 12px; transition: background .15s, border-color .15s; }
+#formproject.builder-canvas.is-dragging-over { border-color: #3157d5; background: #e8edff; }
+.canvas-empty { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 220px; color: #59677e; pointer-events: none; }
+.canvas-empty strong { font-size: 1.125rem; color: #172033; }
+.canvas-empty p { line-height: 1.5; }
+.field-card { background: #fff; border: 1px solid #d7ddea; border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; min-width: 0; box-shadow: 0 2px 5px #17203308; }
+.field-card.is-dragging { box-shadow: 0 18px 36px #17203333; border-color: #3157d5; opacity: .92; }
+.field-card-header { display: flex; align-items: center; gap: 8px; color: #59677e; font-size: .75rem; }
+.field-drag-handle { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 0; border-radius: 6px; background: #f0f3fa; color: #59677e; cursor: grab; font-size: 22px; touch-action: manipulation; }
+.field-card input, .field-card textarea { max-width: 100%; }
+.field-card .inline { width: 100%; height: auto; }
+.field-card .label { height: auto; min-height: 24px; flex-wrap: wrap; }
+.field-card .editor-field { padding: 8px 0 !important; }
+.field-card .delete-field { display: inline-flex; align-items: center; justify-content: center; border: 0; background: transparent; color: #b53939; padding: 6px; border-radius: 5px; cursor: pointer; }
+.canvas-insertion { border: 2px dashed #3157d5; border-radius: 8px; padding: 16px; margin-bottom: 12px; text-align: center; color: #3157d5; background: #f4f6ff; }
+.canvas-field-slot, .canvas-drop-end { position: relative; }
+.canvas-drop-marker { position: absolute; top: -7px; left: 0; right: 0; border-top: 3px solid #3157d5; border-radius: 3px; pointer-events: none; z-index: 1; }
+.canvas-drop-marker.is-after { top: auto; bottom: -7px; }
+.builder-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.builder-actions .Item { flex: 1 1 160px; width: auto; }
+.builder-dialog .Modal { position: relative; }
+.builder-dialog .Fundo { z-index: 1000; }
+.builder-dialog .Modal > .submit, .builder-dialog .submit { height: auto; }
+.builder-dialog .MText > div { height: auto !important; }
+.palette-item:focus-visible, .field-drag-handle:focus-visible, .delete-field:focus-visible, .form-builder .Item:focus-visible, .model-name:focus-visible { outline: 3px solid #3157d5; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .builder-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .builder-palette { padding: 16px; }
+  #formproject.builder-canvas { min-height: 260px; padding: 12px; }
+  .field-card { padding: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .builder-canvas, .form-builder .Item { transition: none; }
+}

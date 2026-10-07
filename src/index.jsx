@@ -13,8 +13,7 @@ createRoot(document.getElementById('root')).render(
         <App />
       </FormProvider>
     </React.StrictMode>
-  </Router>,
-  document.getElementById('root')
+  </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function

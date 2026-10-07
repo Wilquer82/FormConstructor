@@ -2,8 +2,8 @@ import React, { useState, useContext }  from 'react';
 import "../style.css";
 import Context from '../../context/FormContext';
 
-export default function ModalYN({ setMenu=()=>{}, set=()=>{} }) {
-  const { formItens, setFormItens } = useContext(Context);
+export default function ModalYN({ onCreate,  setMenu=()=>{}, set=()=>{} }) {
+  const { setFormItens } = useContext(Context);
   const [text, setText] = useState(""); 
   const [disable, setdisable] = useState(true);
   const [visible, setVisible] = useState(true);
@@ -33,7 +33,8 @@ export default function ModalYN({ setMenu=()=>{}, set=()=>{} }) {
     RadioItem.historic = historic;
     RadioItem.valid = true;
 
-    setFormItens([...formItens, {item: RadioItem}]);
+    if (onCreate) onCreate({ ...RadioItem });
+    else setFormItens(items => [...items, { ...RadioItem }]);
    
     setVisible(false);
     setMenu(false);

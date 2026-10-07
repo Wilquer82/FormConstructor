@@ -2,9 +2,9 @@ import React, { useState, useContext }  from 'react';
 import "../style.css";
 import Context from '../../context/FormContext';
 
- function ModalTitle({ set =() => {}, setMenu=()=>{} }) {
+ function ModalTitle({ onCreate,  set =() => {}, setMenu=()=>{} }) {
  
-  const { formItens, setFormItens } = useContext(Context);
+  const { setFormItens } = useContext(Context);
   const [text, setText] = useState(""); 
   const [disable, setdisable] = useState(true);
   const [valor, setValor] = useState("h3");
@@ -18,7 +18,8 @@ import Context from '../../context/FormContext';
     titleDiv.text = `> ${text} <`;
     titleDiv.valid = true;
     
-    setFormItens([...formItens, {item: titleDiv}]);
+    if (onCreate) onCreate({ ...titleDiv });
+    else setFormItens(items => [...items, { ...titleDiv }]);
     setVisible(false);
     setMenu(false);
     set(false);
